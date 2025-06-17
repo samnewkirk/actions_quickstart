@@ -12,5 +12,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Simulate Azure deployment
-        run: echo "Deploying resource Azure Resource123"
+        run: echo "Deploying resource Azure Resource ML Workspace"
         # run: echo "Deploying resource: ${{ github.event.inputs.resource_name }}"
