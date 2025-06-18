@@ -2,10 +2,14 @@ name: Azure Resource Deployment
 
 on:
   workflow_dispatch:
+    inputs:
+      resource_name:
+        required: true
+        type: string
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Simulate Azure deployment
-        run: echo "Deploying resource"
+        run: echo "Deploying resource: ${{ github.event.inputs.resource_name }}"
