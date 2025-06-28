@@ -19,4 +19,4 @@ jobs:
       - name: Simulate VM Deployment
         run: |
           echo "Deploying resource ID ${{ github.event.inputs.resource_id }}"
-          sleep 30
+          slep 30
