@@ -18,6 +18,5 @@ jobs:
     steps:
       - name: Simulate VM Deployment
         run: |
-          echo "Deploying resource ${{ github.event.inputs.resource_name }} with ${{ github.event.inputs.resource_id }}"
+          echo "Deploying resource ID ${{ github.event.inputs.resource_id }}"
           sleep 30
-          echo "VM deployment simulated"

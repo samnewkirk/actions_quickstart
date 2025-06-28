@@ -17,6 +17,6 @@ jobs:
     steps:
       - name: Simulate AI Services Deployment
         run: |
-          echo "Deploying resource ${{ github.event.inputs.resource_name }} with ${{ github.event.inputs.resource_id }}"
+          echo "Deploying resource ID ${{ github.event.inputs.resource_id }}"
           sleep 55
-          echo "AI Services deployment simulated"
+
