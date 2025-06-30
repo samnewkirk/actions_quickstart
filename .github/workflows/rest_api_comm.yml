@@ -21,3 +21,22 @@ jobs:
               USER_EMAIL: ${{needs.rest_api_parse_json.outputs.user_email}}
             run: |
               echo "$USER_EMAIL"
+
+
+
+# /api/v1/workspaces
+ 
+#   "user_email": "new_testuser1@example.com",
+#   "resources": [
+#     {
+#       "region_name": "eastus",
+#       "type_name": "Blob Storage",
+#       "resource_name": "blob_56258"
+#     },
+#     {
+#       "region_name": "eastus2",
+#       "type_name": "ML Workspace",
+#       "resource_name": "mlw_56258"
+#     }
+#   ]
+# }
