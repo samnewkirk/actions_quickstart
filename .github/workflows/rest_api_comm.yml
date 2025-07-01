@@ -1,27 +1,48 @@
 name: Rest API Comm
 
 on:
-    [push]
-
+  workflow_dispatch:
+    inputs:
+      workflow_id:
+        description: "The workflow id"
+        required: true
+      user_email:
+        description: "The email of the user requesting the deployment"
+        required: true
+      deploy_aure_ml:
+          description: ""
+          required: false
+          default: "false"
+      deploy_azure_open_ai:
+          description: ""
+          required: false
+          default: "false"
+      deploy_document_intelligence:
+          description: ""
+          required: false
+          default: "false"
+      deploy_ai_search:
+          description: ""
+          required: false
+          default: "false"
+      deploy_computer_vision:
+          description: ""
+          required: false
+          default: "false"
 jobs:
-    rest_api_parse_json:
+    test_job:
         runs-on: ubuntu-latest
-        outputs:
-            user_email: ${{ steps.parse_json.outputs.user_email}}
         steps:
             - id: parse_json
               name: Rest API Testing
               run: |
-                echo "user_email="user.email@email.com"" >> $GITHUB_OUTPUT
-    output_results:
-        runs-on: ubuntu-latest
-        needs: rest_api_parse_json
-        steps:
-          - env:
-              USER_EMAIL: ${{needs.rest_api_parse_json.outputs.user_email}}
-            run: |
-              echo "$USER_EMAIL"
-
+                echo "Workflow Id: ${{ github.event.inputs.workflow_id }}"
+                echo "User Email: ${{ github.event.inputs.user_email }}"
+                echo "Deploy Azure ML: ${{ github.event.inputs.deploy_aure_ml }}"
+                echo "Deploy Azure OpenAI: ${{ github.event.inputs.deploy_azure_open_ai }}"
+                echo "Deploy Document Intelligence: ${{ github.event.inputs.deploy_document_intelligence }}"
+                echo "Deploy AI Search: ${{ github.event.inputs.deploy_ai_search }}"
+                echo "Deploy Computer Vision: ${{ github.event.inputs.deploy_computer_vision }}"
 
 
 # /api/v1/workspaces
