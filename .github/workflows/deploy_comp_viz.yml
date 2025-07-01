@@ -1,4 +1,4 @@
-name: Azure VM Deployment
+name: Comp Vision Deployment
 
 on:
   workflow_dispatch:
@@ -16,7 +16,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Simulate VM Deployment
+      - name: Simulate Deployment
         run: |
           echo "Deploying resource ID ${{ github.event.inputs.resource_id }}"
           slep 30

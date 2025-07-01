@@ -1,4 +1,4 @@
-name: Azure AI Services Deployment
+name: Doc Intel Deployment
 
 on:
   workflow_dispatch:
@@ -15,8 +15,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Simulate AI Services Deployment
+      - name: Simulate Deployment
         run: |
           echo "Deploying resource ID ${{ github.event.inputs.resource_id }}"
-          sleep 55
-
+          sleep 35

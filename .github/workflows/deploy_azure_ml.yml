@@ -1,4 +1,4 @@
-name: ML Workspace Deployment
+name: Azure ML Deployment
 
 on:
   workflow_dispatch:
@@ -15,7 +15,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Simulate ML Deployment
+      - name: Simulate Deployment
         run: |
           echo "Deploying resource ID ${{ github.event.inputs.resource_id }}"
           sleep 40
