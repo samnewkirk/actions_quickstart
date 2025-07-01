@@ -1,0 +1,22 @@
+name: Azure AI Search Deployment
+
+on:
+  workflow_dispatch:
+    inputs:
+      resource_name:
+        description: "name of the resource to deploy"
+        required: true
+      resource_id:
+        description: "id of the resource to deploy"
+        required: true
+
+
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Simulate Deployment
+        run: |
+          echo "Deploying resource ID ${{ github.event.inputs.resource_id }}"
+          slep 30
