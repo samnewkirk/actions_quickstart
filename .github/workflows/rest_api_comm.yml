@@ -3,21 +3,17 @@ name: Rest API Comm
 on:
   workflow_dispatch:
     inputs:
-      workflow_id:
-        description: "The workflow id"
+      azure_region:
+        description: ""
         required: true
-      user_email:
-        description: "The email of the user requesting the deployment"
+      azure_subscription:
+        description: ""
         required: true
       deploy_aure_ml:
           description: ""
           required: false
           default: "false"
       deploy_azure_open_ai:
-          description: ""
-          required: false
-          default: "false"
-      deploy_document_intelligence:
           description: ""
           required: false
           default: "false"
@@ -29,35 +25,38 @@ on:
           description: ""
           required: false
           default: "false"
+      deploy_document_intelligence:
+          description: ""
+          required: false
+          default: "false"
+      project_name:
+        description: ""
+        required: true
+      user_email:
+        description: "The email of the user requesting the deployment"
+        required: true
+      workflow_id:
+        description: "The workflow id"
+        required: true
 jobs:
-    test_job:
+    job1:
         runs-on: ubuntu-latest
         steps:
-            - id: parse_json
-              name: Rest API Testing
+            - id: print_inputs
+              name: Print Inputs
               run: |
-                echo "Workflow Id: ${{ github.event.inputs.workflow_id }}"
-                echo "User Email: ${{ github.event.inputs.user_email }}"
+                echo "Azure Region: ${{ github.event.inputs.azure_region}}"
+                echo "Azure Subscription: ${{ github.event.inputs.azure_subscription}}"
                 echo "Deploy Azure ML: ${{ github.event.inputs.deploy_aure_ml }}"
                 echo "Deploy Azure OpenAI: ${{ github.event.inputs.deploy_azure_open_ai }}"
-                echo "Deploy Document Intelligence: ${{ github.event.inputs.deploy_document_intelligence }}"
                 echo "Deploy AI Search: ${{ github.event.inputs.deploy_ai_search }}"
                 echo "Deploy Computer Vision: ${{ github.event.inputs.deploy_computer_vision }}"
-
-
-# /api/v1/workspaces
- 
-#   "user_email": "new_testuser1@example.com",
-#   "resources": [
-#     {
-#       "region_name": "eastus",
-#       "type_name": "Blob Storage",
-#       "resource_name": "blob_56258"
-#     },
-#     {
-#       "region_name": "eastus2",
-#       "type_name": "ML Workspace",
-#       "resource_name": "mlw_56258"
-#     }
-#   ]
-# }
+                echo "Deploy Document Intelligence: ${{ github.event.inputs.deploy_document_intelligence }}"
+                echo "Project Name:  ${{ github.event.inputs.project_name }}"
+                echo "User Email: ${{ github.event.inputs.user_email }}"
+                echo "Workflow Id: ${{ github.event.inputs.workflow_id }}"
+            - id: Write_tfvars
+              name: Write TfVars
+              run: |
+                touch "mytfvars.auto.tfvars"
+                echo "azure_region=${{ github.event.inputs.azure_region }}>>mytfvars.auto.tfvars"
