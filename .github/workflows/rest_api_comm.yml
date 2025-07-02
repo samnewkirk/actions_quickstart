@@ -1,0 +1,60 @@
+name: Rest API Comm
+
+on:
+  workflow_dispatch:
+    inputs:
+      workflow_id:
+        description: "The workflow id"
+        required: true
+      user_email:
+        description: "The email of the user requesting the deployment"
+        required: true
+      deploy_azure_ml:
+          description: ""
+          required: false
+          default: "false"
+      deploy_azure_open_ai:
+          description: ""
+          required: false
+          default: "false"
+      deploy_document_intelligence:
+          description: ""
+          required: false
+          default: "false"
+      deploy_ai_search:
+          description: ""
+          required: false
+          default: "false"
+      deploy_computer_vision:
+          description: ""
+          required: false
+          default: "false"
+jobs:
+    rest_api:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Rest API Testing
+              run: |
+                echo "Testing API"
+                echo "Workflow Id: ${{ github.event.inputs.workflow_id }}"
+                echo "User Email: ${{ github.event.inputs.user_email }}"
+
+                if [ "${{ github.event.inputs.deploy_azure_ml }}" == "true" ]; then
+                    echo "Deploy Azure ML"
+                fi
+
+                if [ "${{ github.event.inputs.deploy_azure_open_ai }}" == "true" ]; then
+                    echo "Deploy Azure OpenAI"
+                fi
+
+                if [ "${{ github.event.inputs.deploy_document_intelligence }}" == "true" ]; then
+                    echo "Deploy Document Intelligence"
+                fi
+
+                if [ "${{ github.event.inputs.deploy_ai_search }}" == "true" ]; then
+                    echo "Deploy AI Search"
+                fi
+
+                if [ "${{ github.event.inputs.deploy_computer_vision }}" == "true" ]; then
+                    echo "Deploy Computer Vision"
+                fi
