@@ -7,24 +7,30 @@ on:
       azure_region:
         description: ""
         required: true
+        default: "DELETE: EASTUS"
       business_unit:
         description: ""
         required: true
+        default: "DELETE: BU"
       deploy_resources:
         description: ""
         default: "deploy_azure_ml=false,deploy_azure_open_ai=false,deploy_ai_search=false,deploy_computer_vision=false,deploy_document_intelligence=false"
       environment:
         description: ""
         required: true
+        default: "DELETE: DEV"
       project_name:
         description: ""
         required: true
+        default: "DELETE: PRJ"
       user_email:
         description: "The email of the user requesting the deployment"
         required: true
+        default: "DELETE: matthew@clark.com"
       workflow_id:
         description: "The workflow id"
         required: true
+        default: "DELETE: LKJDLKFJKLSJDFLKJSDLKFJKLSJDF8908098"
 jobs:
     job1:
         runs-on: ubuntu-latest
