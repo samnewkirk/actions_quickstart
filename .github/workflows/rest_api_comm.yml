@@ -7,15 +7,15 @@ on:
       azure_region:
         description: ""
         required: true
-      azure_subscription:
-        description: ""
-        required: true
       business_unit:
         description: ""
         required: true
       deploy_resources:
         description: ""
         default: "deploy_azure_ml=false,deploy_azure_open_ai=false,deploy_ai_search=false,deploy_computer_vision=false,deploy_document_intelligence=false"
+      environment:
+        description: ""
+        required: true
       project_name:
         description: ""
         required: true
@@ -33,7 +33,7 @@ jobs:
               name: Print Inputs
               run: |
                 echo "Azure Region: ${{ github.event.inputs.azure_region}}"
-                echo "Azure Subscription: ${{ github.event.inputs.azure_subscription}}"
+                echo "Azure Subscription: ${{ github.event.inputs.environment}}"
                 echo "Business Unit: ${{ github.event.inputs.business_unit }}"
                 echo "Deploy Azure ML: ${{ github.event.inputs.deploy_resources }}""
                 echo "Project Name:  ${{ github.event.inputs.project_name }}"
