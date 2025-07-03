@@ -3,6 +3,7 @@ name: eNGine Deployment
 on:
   workflow_dispatch:
     inputs:
+      
       azure_region:
         description: ""
         required: true
@@ -12,26 +13,9 @@ on:
       business_unit:
         description: ""
         required: true
-      deploy_aure_ml:
-          description: ""
-          required: false
-          default: "false"
-      deploy_azure_open_ai:
-          description: ""
-          required: false
-          default: "false"
-      deploy_ai_search:
-          description: ""
-          required: false
-          default: "false"
-      deploy_computer_vision:
-          description: ""
-          required: false
-          default: "false"
-      deploy_document_intelligence:
-          description: ""
-          required: false
-          default: "false"
+      deploy_resources:
+        description: ""
+        default: "deploy_azure_ml=false,deploy_azure_open_ai=false,deploy_ai_search=false,deploy_computer_vision=false,deploy_document_intelligence=false"
       project_name:
         description: ""
         required: true
@@ -51,11 +35,7 @@ jobs:
                 echo "Azure Region: ${{ github.event.inputs.azure_region}}"
                 echo "Azure Subscription: ${{ github.event.inputs.azure_subscription}}"
                 echo "Business Unit: ${{ github.event.inputs.business_unit }}"
-                echo "Deploy Azure ML: ${{ github.event.inputs.deploy_aure_ml }}"
-                echo "Deploy Azure OpenAI: ${{ github.event.inputs.deploy_azure_open_ai }}"
-                echo "Deploy AI Search: ${{ github.event.inputs.deploy_ai_search }}"
-                echo "Deploy Computer Vision: ${{ github.event.inputs.deploy_computer_vision }}"
-                echo "Deploy Document Intelligence: ${{ github.event.inputs.deploy_document_intelligence }}"
+                echo "Deploy Azure ML: ${{ github.event.inputs.deploy_resources }}""
                 echo "Project Name:  ${{ github.event.inputs.project_name }}"
                 echo "User Email: ${{ github.event.inputs.user_email }}"
                 echo "Workflow Id: ${{ github.event.inputs.workflow_id }}"
