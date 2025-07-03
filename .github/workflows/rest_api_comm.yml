@@ -1,4 +1,4 @@
-name: Rest API Comm
+name: eNGine Deployment
 
 on:
   workflow_dispatch:
@@ -7,6 +7,9 @@ on:
         description: ""
         required: true
       azure_subscription:
+        description: ""
+        required: true
+      business_unit:
         description: ""
         required: true
       deploy_aure_ml:
@@ -47,6 +50,7 @@ jobs:
               run: |
                 echo "Azure Region: ${{ github.event.inputs.azure_region}}"
                 echo "Azure Subscription: ${{ github.event.inputs.azure_subscription}}"
+                echo "Business Unit: ${{ github.event.inputs.business_unit }}"
                 echo "Deploy Azure ML: ${{ github.event.inputs.deploy_aure_ml }}"
                 echo "Deploy Azure OpenAI: ${{ github.event.inputs.deploy_azure_open_ai }}"
                 echo "Deploy AI Search: ${{ github.event.inputs.deploy_ai_search }}"
@@ -55,6 +59,14 @@ jobs:
                 echo "Project Name:  ${{ github.event.inputs.project_name }}"
                 echo "User Email: ${{ github.event.inputs.user_email }}"
                 echo "Workflow Id: ${{ github.event.inputs.workflow_id }}"
+            - id: create_folder
+              name: Create Folder
+              run: |
+                echo "Creating Folder...."
+            - id: copy_template
+              name: Copy Template
+              run: |
+                echo "Copying Template..."
             - id: Write_tfvars
               name: Write TfVars
               run: |
