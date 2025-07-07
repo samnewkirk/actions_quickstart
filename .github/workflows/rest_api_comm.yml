@@ -32,7 +32,7 @@ on:
         default: "DELETE: LKJDLKFJKLSJDFLKJSDLKFJKLSJDF8908098"
 
 env:
-  DIRECTORY: "./mydir123"
+  DIRECTORY: "mydir123"
 jobs:
     setup:
         runs-on: ubuntu-latest
@@ -54,5 +54,12 @@ jobs:
             - id: Write_tfvars
               name: Write TfVars
               run: |
+                cd $DIRECTORY
                 touch "mytfvars.auto.tfvars"
                 echo "azure_region=${{ github.event.inputs.azure_region }}>>mytfvars.auto.tfvars"
+
+                echo "${{ github.event.inputs.deploy_resources }}" | tr ',' '\n'>>mytfvars.auto.tfvars
+
+                cat mytfvars.auto.tfvars
+
+                
