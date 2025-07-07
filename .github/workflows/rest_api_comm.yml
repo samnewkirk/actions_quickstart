@@ -38,6 +38,7 @@ jobs:
             - id: print_inputs
               name: Print Inputs
               run: |
+                ls -al
                 echo "Azure Region: ${{ github.event.inputs.azure_region}}"
                 echo "Azure Subscription: ${{ github.event.inputs.environment}}"
                 echo "Business Unit: ${{ github.event.inputs.business_unit }}"
@@ -49,6 +50,7 @@ jobs:
               name: Create Folder
               run: |
                 echo "Creating Folder...."
+                mkdir "project_name"
             - id: copy_template
               name: Copy Template
               run: |
