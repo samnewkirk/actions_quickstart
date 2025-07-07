@@ -30,6 +30,9 @@ on:
         description: "The workflow id"
         required: true
         default: "DELETE: LKJDLKFJKLSJDFLKJSDLKFJKLSJDF8908098"
+
+env:
+  DIRECTORY: "./mydir123"
 jobs:
     setup:
         runs-on: ubuntu-latest
@@ -39,7 +42,6 @@ jobs:
               name: Create Folder
               run: |
                 echo "Creating Folder...."
-                DIRECTORY = "./mydir123"
                 if [ ! -d "$DIRECTORY" ]; then mkdir "$DIRECTORY"; fi
                 ls -al
             - id: copy_template
