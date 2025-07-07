@@ -35,17 +35,6 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
-            - id: print_inputs
-              name: Print Inputs
-              run: |
-                ls -al
-                echo "Azure Region: ${{ github.event.inputs.azure_region}}"
-                echo "Azure Subscription: ${{ github.event.inputs.environment}}"
-                echo "Business Unit: ${{ github.event.inputs.business_unit }}"
-                echo "Deploy Azure ML: ${{ github.event.inputs.deploy_resources }}"
-                echo "Project Name:  ${{ github.event.inputs.project_name }}"
-                echo "User Email: ${{ github.event.inputs.user_email }}"
-                echo "Workflow Id: ${{ github.event.inputs.workflow_id }}"
             - id: create_folder
               name: Create Folder
               run: |
