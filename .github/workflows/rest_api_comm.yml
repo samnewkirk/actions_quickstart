@@ -51,6 +51,7 @@ jobs:
               run: |
                 echo "Creating Folder...."
                 mkdir "project_name"
+                ls -al
             - id: copy_template
               name: Copy Template
               run: |
