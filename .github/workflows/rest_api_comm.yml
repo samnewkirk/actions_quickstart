@@ -32,7 +32,9 @@ on:
         default: "DELETE: LKJDLKFJKLSJDFLKJSDLKFJKLSJDF8908098"
 
 env:
-  DIRECTORY: "mydir123"
+  DIRECTORY: "./mydir123"
+  TEMPLATE: "./faketftemplate"
+  TFVARS: "my.auto.tfvars"
 jobs:
     setup:
         runs-on: ubuntu-latest
@@ -48,17 +50,14 @@ jobs:
               name: Copy Template
               run: |
                 echo "Copying Template...(overwrite)"
-                cp -rf faketftemplate/* $DIRECTORY
-
-                ls -al $DIRECTORY
+                cp -rf $TEMPLATE/* $DIRECTORY
             - id: Write_tfvars
               name: Write TfVars
               run: |
                 cd $DIRECTORY
-                touch "mytfvars.auto.tfvars"
-                echo "azure_region=${{ github.event.inputs.azure_region }}>>mytfvars.auto.tfvars"
-
-                echo "${{ github.event.inputs.deploy_resources }}" | tr ',' '\n'>>mytfvars.auto.tfvars
+                touch "$TFVARS"
+                echo "azure_region=${{ github.event.inputs.azure_region }}">>$TFVARS
+                echo "${{ github.event.inputs.deploy_resources }}" | tr ',' '\n'>>$TFVARS
 
                 cat mytfvars.auto.tfvars
 
