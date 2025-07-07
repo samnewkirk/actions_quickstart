@@ -47,7 +47,10 @@ jobs:
             - id: copy_template
               name: Copy Template
               run: |
-                echo "Copying Template..."
+                echo "Copying Template...(overwrite)"
+                cp -rf faketftemplate/* $DIRECTORY
+
+                ls -al $DIRECTORY
             - id: Write_tfvars
               name: Write TfVars
               run: |
