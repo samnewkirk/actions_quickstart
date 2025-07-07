@@ -3,7 +3,6 @@ name: eNGine Deployment
 on:
   workflow_dispatch:
     inputs:
-      
       azure_region:
         description: ""
         required: true
@@ -35,6 +34,7 @@ jobs:
     job1:
         runs-on: ubuntu-latest
         steps:
+            - uses: actions/checkout@v4
             - id: print_inputs
               name: Print Inputs
               run: |
