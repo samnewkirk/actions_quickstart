@@ -6,7 +6,7 @@ on:
       azure_region:
         description: ""
         required: true
-        default: "DELETE: EASTUS"
+        default: "EASTUS"
       business_unit:
         description: ""
         required: true
@@ -25,7 +25,7 @@ on:
       user_email:
         description: "The email of the user requesting the deployment"
         required: true
-        default: "DELETE: matthew@clark.com"
+        default: "matthew@clark.com"
       workflow_id:
         description: "The workflow id"
         required: true
@@ -56,8 +56,8 @@ jobs:
               run: |
                 cd $DIRECTORY
                 touch "$TFVARS"
-                echo "azure_region=\"${{ github.event.inputs.azure_region }}\">>$TFVARS"
+                echo "azure_region = \"${{ github.event.inputs.azure_region }}\"">>$TFVARS
                 echo "${{ github.event.inputs.deploy_resources }}" | tr ',' '\n'>>$TFVARS
-                echo "ad_user_email = "${{ github.event.inputs.user_email }}"">>$TFVARS
+                echo "ad_user_email = \"${{ github.event.inputs.user_email }}\"">>$TFVARS
 
                 cat $TFVARS
