@@ -56,7 +56,7 @@ jobs:
               run: |
                 cd $DIRECTORY
                 touch "$TFVARS"
-                echo "azure_region="${{ github.event.inputs.azure_region }}"">>$TFVARS
+                echo "azure_region=\"${{ github.event.inputs.azure_region }}\">>$TFVARS"
                 echo "${{ github.event.inputs.deploy_resources }}" | tr ',' '\n'>>$TFVARS
                 echo "ad_user_email = "${{ github.event.inputs.user_email }}"">>$TFVARS
 
