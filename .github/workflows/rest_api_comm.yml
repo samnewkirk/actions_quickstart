@@ -31,6 +31,8 @@ on:
         required: true
         default: "DELETE: LKJDLKFJKLSJDFLKJSDLKFJKLSJDF8908098"
 
+permissions:
+  contents: write
 env:
   DIRECTORY: "./mydir123"
   TEMPLATE: "./faketftemplate"
