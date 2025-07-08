@@ -61,3 +61,12 @@ jobs:
                 echo "ad_user_email = \"${{ github.event.inputs.user_email }}\"">>$TFVARS
 
                 cat $TFVARS
+
+              
+            - id: commit
+              name: Commit Changes
+              uses: stefanzweifel/git-auto-commit-action@v6
+              with:
+                # Optional. Commit message for the created commit.
+                # Defaults to "Apply automatic changes"
+                commit_message: Automated Change
